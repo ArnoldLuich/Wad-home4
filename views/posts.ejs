@@ -8,24 +8,37 @@
 </head>
 <body>
  <h1>Posts page</h1>
- <%- include('navbar.ejs') %>
+ <%- include('./partials/navbar.ejs') %>
  <div class="posts list">
  <h2>All posts</h2>
+
  <% if (posts.length > 0) { %>
+
  <% posts.forEach(post => { %>
  <a class="singlepost" href="/singlepost/<%= post.id %>">
- <h3 class="title">
- <%= post.title %>
- </h3>
+
+
+
  <p class="body">
+ <img src="<%= post.userurl %>" alt="user">
+ <%= post.date %>
+ <img src="<%= post.posturl %>" alt="post">
  <%= post.body %>
+ <%= post.likes %>
+
+
  </p>
+ 
  </a>
  <% }) %>
+
  <% } else { %>
  <p>You did not post anything...</p>
  <% } %>
  </div>
- <%- include('footer.ejs') %>
+
+ <%- include('./partials/footer.ejs') %>
+
+
 </body>
 </html>
