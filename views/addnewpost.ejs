@@ -7,17 +7,28 @@
  <h1>Create a post</h1>
  <%- include('./partials/navbar.ejs') %>
  <br>
+
  <div class="create-post">
  <form action="/posts" method="POST">
- <label for="title">Post title:</label>
- <input type="text" id="title" name="title" required><br><br>
- <label for="body">Post body:</label>
+
+
+
+ <label for="body">Post text:</label>
  <input type="text" id="body" name="body" required><br><br>
- <label for="urllink"> URL link:</label>
- <input type="text" id="urllink" name="urllink"></textarea><br><br>
+
+ <label for="posturl">  Posr picture URL:</label>
+ <input type="text" id="posturl" name="posturl"></textarea><br><br>
+
+ <label for="userurl"> Profile picture URL:</label>
+ <input type="text" id="userurl" name="userurl"></textarea><br><br>
+
+ <label for="date"> Date</label>
+ <input type="text" id="date" name="date"></textarea><br><br>
+
  <button>Submit</button>
  </form>
  </div>
+
  <%- include('./partials/footer.ejs') %>
 </body>
 </html>

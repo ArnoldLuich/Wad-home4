@@ -22,7 +22,11 @@
  <p class="body">
  <img src="<%= post.userurl %>" alt="user">
  <%= post.date %>
+
+ <% if (posts.posturl !== '' ) { %>
  <img src="<%= post.posturl %>" alt="post">
+ <% } %>
+
  <%= post.body %>
  <%= post.likes %>
 
