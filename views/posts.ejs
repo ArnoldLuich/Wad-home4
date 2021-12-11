@@ -3,44 +3,63 @@
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="stylesheet" href="/style.css">
+ <!--<link rel="stylesheet" href="public\css\style.css">-->
+ <link href="./css/style.css" rel="stylesheet" type="text/css">
  <title>Posts</title>
 </head>
+
 <body>
  <%- include('./partials/navbar.ejs') %>
- <div class="posts list">
-
+ <div class="postslist">
  <% if (posts.length > 0) { %>
-
  <% posts.forEach(post => { %>
  <a class="singlepost" href="/singlepost/<%= post.id %>">
 
 
+    <div class="flex-container">
+        <div1>
+        <p class="body">
+            <div_user>
+                <img src="<%= post.userurl %>" alt="user">
+            </div_user>
 
- <p class="body">
- <img src="<%= post.userurl %>" alt="user">
- <p> <%= post.date %></p>
-<!--Siin on vaja if korda teha-->
- <% if (posts.posturl !== '' ) { %>
- <img src="<%= post.posturl %>" alt="post">
- <% } %>
+            <p> <%= post.date %></p>
+            
 
- <p> <%= post.body %> </p> 
- <p><%= post.likes %></p>
+            
+            <div_post>
+                <img src="<%= post.posturl %>" alt="post">
+            </div_post>
+            
+
+            <p class="posttext"> <%= post.body %> </p> 
+            <button>Like</button>
+            <p class="postlikes"><%= post.likes %></p>
+        </p>
+        </div1>
+    </div>
 
 
 
- </p>
  </a>
  <% }) %>
-
  <% } else { %>
  <p>You did not post anything...</p>
  <% } %>
  </div>
 
- <%- include('./partials/footer.ejs') %>
+ <script>
+    const delreq = document.querySelector('a.delete');
+    delreq.addEventListener('click', (e) => {
+    const endpoint = `/posts/${delreq.dataset.del}`;
+    fetch(endpoint, {
+    method: 'DELETE',
+    }).then(window.location.href = '/posts')
+    });
+</script>
 
+
+ <%- include('./partials/footer.ejs') %>
 
 </body>
 </html>
