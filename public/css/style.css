@@ -43,3 +43,8 @@ div_logo{
     width: auto;
 }
 
+button.delete {
+    width: 3%;
+    height: 3%;
+}
+

@@ -40,17 +40,16 @@
              method: 'PUT',
          })
      });
+
+     const delreq = document.querySelector('button.delete');
+     delreq.addEventListener('click', (e) => {
+         const endpoint = `/posts/${delreq.dataset.del}`;
+         fetch(endpoint, {
+             method: 'DELETE',
+         }).then(window.location.href = '/posts')
+     });
  </script>
 
- <script>
- const delreq = document.querySelector('a.delete');
- delreq.addEventListener('click', (e) => {
- const endpoint = `/posts/${delreq.dataset.del}`;
- fetch(endpoint, {
- method: 'DELETE',
- }).then(window.location.href = '/posts')
- });
- </script>
 
  <%- include('./partials/footer.ejs') %>
 
