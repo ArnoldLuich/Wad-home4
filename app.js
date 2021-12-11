@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static('Public'));
 app.use(express.static(__dirname + '/public'));
-//app.use(express.static(path.join(__dirname, 'public' )));
+
 
 app.listen(3000, () => {
  console.log("Server is listening to port 3000")
@@ -68,13 +68,13 @@ app.delete('/posts/:id', async(req, res) => {
  }
 });
 
-
+let datenow = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long', day: '2-digit'}).format(new Date())
 app.post('/posts', async(req, res) => {
  try {
  const post = req.body;
  console.log(post);
  const newpost = await pool.query(
- "INSERT INTO nodetable(date, body, likes, posturl, userurl) values ($1, $2, $3, $4, $5)RETURNING*", [post.date, post.body, 0, post.posturl, post.userurl]);
+ "INSERT INTO nodetable(date, body, likes, posturl, userurl) values ($1, $2, $3, $4, $5)RETURNING*", [datenow, post.body, 0, post.posturl, post.userurl]);
  res.redirect('posts');
  } catch (err) {
  console.error(err.message)
