@@ -21,16 +21,26 @@
         <div_post>
             <img src="<%= posts.posturl %>" alt="post">
         </div_post>
-        <p class="posttext"> <%= posts.body %> </p> 
+        <p class="posttext"> <%= posts.body %> </p>
+        <button class="likebutton" type="button">Like</button>
         <p class="postlikes"><%= posts.likes %></p>
     </p>
     </div1>
 
-    <a class="delete" data-del="<%= posts.id %>">Delete</a>
+    <button class="delete" data-del="<%= posts.id %>">Delete</button>
     
 </div>
 
-
+ <script>
+     const likes = document.querySelector('button.likebutton')
+     likes.addEventListener('click', (e) => {
+         likes.disabled = true;
+         const endpoint = `/singlepost/${likes.dataset.del}`;
+         fetch(endpoint, {
+             method: 'PUT',
+         })
+     });
+ </script>
 
  <script>
  const delreq = document.querySelector('a.delete');

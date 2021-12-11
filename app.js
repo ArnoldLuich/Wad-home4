@@ -81,6 +81,20 @@ app.post('/posts', async(req, res) => {
  }
 });
 
+app.put('/singlepost/:id', async(req, res) => {
+ try {
+  const { id } = req.params;
+  const post = req.body;
+  console.log("update request has arrived");
+  const updatepost = await pool.query(
+      "UPDATE nodetable SET likes = likes + 1"
+ );
+  res.json(post);
+ } catch (err) {
+  console.error(err.message);
+ }
+});
+
 
 app.get('/addnewpost', (req, res) => {
  res.render('addnewpost');
